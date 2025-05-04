@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | DefendaMinecraft</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen">
+  <div class="flex">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-blue-900 text-white min-h-screen p-4">
+      <h1 class="text-2xl font-bold mb-6">DefendaMinecraft</h1>
+      <nav class="space-y-3">
+        <a href="#" class="block hover:bg-blue-800 p-2 rounded">Dashboard</a>
+        <a href="#" class="block hover:bg-blue-800 p-2 rounded">Users</a>
+        <a href="#" class="block hover:bg-blue-800 p-2 rounded">Settings</a>
+        <a href="#" class="block hover:bg-blue-800 p-2 rounded">Logs</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-6">
+      <header class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-semibold">Dashboard Overview</h2>
+        <div class="bg-white px-4 py-2 rounded shadow text-sm">Logged in as <strong>admin</strong></div>
+      </header>
+
+      <!-- Stats Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+        <div class="bg-white p-4 rounded shadow">
+          <h3 class="text-sm text-gray-500">Total Players</h3>
+          <p class="text-xl font-bold">1,204</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow">
+          <h3 class="text-sm text-gray-500">Active Servers</h3>
+          <p class="text-xl font-bold">32</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow">
+          <h3 class="text-sm text-gray-500">Reports</h3>
+          <p class="text-xl font-bold">87</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow">
+          <h3 class="text-sm text-gray-500">Banned Users</h3>
+          <p class="text-xl font-bold">14</p>
+        </div>
+      </div>
+
+      <!-- Chart Section -->
+      <div class="bg-white p-6 rounded shadow">
+        <h3 class="text-lg font-semibold mb-4">Player Growth</h3>
+        <canvas id="playerChart"></canvas>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('playerChart').getContext('2d');
+    const playerChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+          label: 'Players',
+          data: [120, 190, 300, 500, 420, 600],
+          backgroundColor: 'rgba(59, 130, 246, 0.2)',
+          borderColor: 'rgba(59, 130, 246, 1)',
+          borderWidth: 2,
+          fill: true,
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top',
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
